@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :aurbata, Aurbata.Repo,
-  username: "bhavyegoel",
-  password: "",
-  hostname: "localhost",
-  database: "aurbata_dev",
+  username: System.get_env("DATABASE_USERNAME") || "postgres",
+  password: System.get_env("DATABASE_PASSWORD") || "postgres",
+  hostname: System.get_env("DATABASE_HOST") || "localhost",
+  database: System.get_env("DATABASE_NAME") || "postgres",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

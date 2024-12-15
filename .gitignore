@@ -35,3 +35,7 @@ aurbata-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore environment files
+.env
+.env.dev
+.env.prod
