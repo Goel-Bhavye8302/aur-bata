@@ -80,7 +80,8 @@ defmodule Aurbata.MixProject do
         "esbuild aurbata --minify",
         "phx.digest"
       ],
-      dev: ["phx.server"]
+      dev: ["phx.server"],
+      seed: ["run priv/repo/seeds.exs"]
     ]
   end
 end
