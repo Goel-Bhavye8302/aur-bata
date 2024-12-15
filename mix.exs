@@ -79,7 +79,8 @@ defmodule Aurbata.MixProject do
         "tailwind aurbata --minify",
         "esbuild aurbata --minify",
         "phx.digest"
-      ]
+      ],
+      dev: ["phx.server"]
     ]
   end
 end
