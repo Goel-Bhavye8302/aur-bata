@@ -1,9 +1,22 @@
 import Config
 
+# Load env file
+if File.exists?(".env") do
+  File.stream!(".env")
+  |> Stream.map(&String.trim/1)
+  |> Stream.reject(&String.starts_with?(&1, "#"))
+  |> Stream.reject(&(&1 == ""))
+  |> Enum.each(fn line ->
+    [key, value] = String.split(line, "=", parts: 2)
+    System.put_env(key, value)
+    IO.puts("#{key}, #{value}")
+  end)
+end
+
 # Configure your database
 config :aurbata, Aurbata.Repo,
   username: System.get_env("DATABASE_USERNAME") || "postgres",
-  password: System.get_env("DATABASE_PASSWORD") || "postgres",
+  password: System.get_env("DATABASE_PASSWORD"),
   hostname: System.get_env("DATABASE_HOST") || "localhost",
   database: System.get_env("DATABASE_NAME") || "postgres",
   stacktrace: true,
