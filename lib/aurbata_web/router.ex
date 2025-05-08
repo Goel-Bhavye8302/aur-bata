@@ -18,14 +18,17 @@ defmodule AurbataWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    get "/live", PostLive, :index
   end
 
   scope "/api", AurbataWeb do
     pipe_through :api
     get "/posts", PostController, :index
-    put "/create", PostController, :create
-    post "/update", PostController, :update
-    delete "/delete", PostController, :delete
+    get "/posts/:id", PostController, :show
+    put "/posts/create", PostController, :create
+    post "/posts/update/:id", PostController, :update
+    get "/posts/delete/:id", PostController, :delete
   end
 
   # Other scopes may use custom stacks.
